@@ -10,19 +10,24 @@ namespace BagOLoot
             return 4;
         }
 
+        public void RemoveToyFromBag (int toyId)
+        {
+            
+        }
+
+        public List<int> GetChildrenWithToys()
+        {
+            return new List<int>() { 1, 2, 3, 4, 6 };
+        }
+
         public List<int> GetChildsToys(int child)
         {
             return new List<int>() { 4, 6, 7, 8 };
         }
 
-         public void RemoveToyFromBag (int toyId)
+        public bool ToyIsDelivered (int childId, int toyId)
         {
-            
-        }
-
-        public List<int> GetChildrenWithToys(int toyId)
-        {
-            return new List<int>() { 1, 2, 3, 4, 6 };
+            return true;
         }
     }
 }

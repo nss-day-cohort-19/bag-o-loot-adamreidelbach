@@ -37,14 +37,13 @@ namespace BagOLoot.Tests
         }
 
         //3
-        // [Fact]
-        // public void GetChildrenWithToys()
-        // {
+        [Fact]
+        public void GetListOfChildrenWithToys()
+        {
+            List<int> listOfChildren = _helper.GetChildrenWithToys();
 
-        //     List<int> listOfChildren = _childrenWithToys.GetChildsToys();
-
-        //     Assert.
-        // }
+            Assert.IsType<List<int>>(listOfChildren);
+        }
 
         //4
         [Fact]
@@ -57,6 +56,14 @@ namespace BagOLoot.Tests
         }
 
         //5
+        [Fact]
+        public void ToyHasBeenDelivered()
+        {
+            int childId = 55;
+            int toyId = 63;
+            var isDelivered = _helper.ToyIsDelivered(childId, toyId);
 
+            Assert.True(isDelivered);
+        }
     }
 }
