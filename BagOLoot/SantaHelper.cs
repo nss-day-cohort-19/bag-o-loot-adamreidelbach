@@ -25,7 +25,7 @@ namespace BagOLoot
             return new List<int>() { 4, 6, 7, 8 };
         }
 
-        public bool ToyIsDelivered (int childId, int toyId)
+        public bool ToyIsDelivered (int childId)
         {
             return true;
         }

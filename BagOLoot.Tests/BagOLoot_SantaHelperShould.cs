@@ -60,8 +60,7 @@ namespace BagOLoot.Tests
         public void ToyHasBeenDelivered()
         {
             int childId = 55;
-            int toyId = 63;
-            var isDelivered = _helper.ToyIsDelivered(childId, toyId);
+            var isDelivered = _helper.ToyIsDelivered(childId);
 
             Assert.True(isDelivered);
         }
