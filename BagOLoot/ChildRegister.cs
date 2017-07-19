@@ -48,7 +48,7 @@ namespace BagOLoot
             return _lastId != 0;
         }
 
-        public List<string> GetChildren ()
+        public List<string> GetChildren()
         {
             using (_connection)
             {
