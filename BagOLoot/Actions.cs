@@ -20,27 +20,26 @@ namespace BagOLoot
         public void AssignToy()
         {
             Console.WriteLine ("Assign toy to which child?");
-            List<string> listOfChildren = registry.GetChildren();
+            List<Child> listOfChildren = registry.GetChildren();
             int counter = 1;
-            foreach (string child in listOfChildren)
+            foreach (var child in listOfChildren)
             {
-                Console.WriteLine(counter + ". " + child);
+                Console.WriteLine(counter + ". " + child.ChildName);
                 counter++;
             }
             Console.Write ("> ");
             var childChoice = Console.ReadLine();
             Console.WriteLine();
 
-            // var childId = registry.GetChild(childChoice);
-            // Console.WriteLine("childId" + childId);
-
             Console.WriteLine ($"Enter toy to add to {childChoice}'s Bag o' Loot?");
             Console.Write("> ");
             var toyChoice = Console.ReadLine();
 
-            _helper.AddToyToBag(childChoice, toyChoice);
+            foreach (var child in listOfChildren)
             {
-
+                if (child.ChildName == childChoice) {
+                    _helper.AddToyToBag(child.ChildId, toyChoice);
+                }
             }
         }
     }

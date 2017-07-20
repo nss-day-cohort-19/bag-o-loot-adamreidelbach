@@ -16,7 +16,7 @@ namespace BagOLoot
         {
             _connection = new SqliteConnection(_connectionString);
         }
-        public int AddToyToBag(string childName, string toyName)
+        public int AddToyToBag(int childId, string toyName)
         {
             int _lastId = 0; // Will store the id of the last inserted record
             using (_connection)
@@ -24,7 +24,6 @@ namespace BagOLoot
                 _connection.Open ();
                 SqliteCommand dbcmd = _connection.CreateCommand();
 
-                int childId = 9;
                 dbcmd.CommandText = ($"insert into ToyBag values (null, '{toyName}', {childId})");
                 Console.WriteLine(dbcmd.CommandText);
                 dbcmd.ExecuteNonQuery();
