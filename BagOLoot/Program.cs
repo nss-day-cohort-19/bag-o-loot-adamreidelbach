@@ -32,10 +32,11 @@ namespace BagOLoot
                     actions.AssignToy();
                     break;
                 }
-                // case 3:
-                // {
-                //     actions.
-                // }
+                case 3:
+                {
+                    actions.RemoveToy();
+                    break;
+                }
                 // if (choice == 3)
                 // {
                 //     Console.WriteLine ("Remove toy from which child");

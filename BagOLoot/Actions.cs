@@ -42,5 +42,45 @@ namespace BagOLoot
                 }
             }
         }
+
+        public void RemoveToy()
+        {
+            Console.WriteLine ("Remove toy from which child?");
+            List<Child> listOfChildren = registry.GetChildren();
+            int counter = 1;
+            foreach (var child in listOfChildren)
+            {
+                Console.WriteLine(counter + ". " + child.ChildName);
+                counter++;
+            }
+            Console.Write ("> ");
+            var childChoice = Console.ReadLine();
+            Console.WriteLine();
+
+            Console.WriteLine ($"Choose toy to revoke from {childChoice}'s Bag o' Loot");
+            int count = 1;
+            List<Toys> listOfToys = new List<Toys>();
+            List<Toys> childsToys = new List<Toys>();
+            foreach (var child in listOfChildren)
+            {
+                if (child.ChildName == childChoice) {
+                    listOfToys = _helper.GetChildsToys(child.ChildId);
+                    foreach (var toy in listOfToys) {
+                        Console.WriteLine(count + ". " + toy.Name);
+                        count++;
+                        childsToys.Add(toy);
+                    }
+                }
+            }
+            Console.Write("> ");
+            var toyChoice = Console.ReadLine();
+
+            foreach (var toy in childsToys)
+            {
+               if (toy.Name == toyChoice) {
+                   _helper.RemoveToyFromBag(toy.ToyId);
+               }
+            }
+        }
     }
 }
