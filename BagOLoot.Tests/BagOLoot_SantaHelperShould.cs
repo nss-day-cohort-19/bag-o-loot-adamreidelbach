@@ -17,9 +17,9 @@ namespace BagOLoot.Tests
         public void AddToyToChildsBag()
         {
             string toyName = "Skateboard";
-            int childId = 715;
-            int toyId = _helper.AddToyToBag(toyName, childId);
-            List<int> toys = _helper.GetChildsToys(childId);
+            string childName = "Billy";
+            int toyId = _helper.AddToyToBag(toyName, childName);
+            List<int> toys = _helper.GetChildsToys(toyId);
 
             Assert.Contains(toyId, toys);
         }
@@ -60,8 +60,7 @@ namespace BagOLoot.Tests
         public void ToyHasBeenDelivered()
         {
             int childId = 55;
-            int toyId = 63;
-            var isDelivered = _helper.ToyIsDelivered(childId, toyId);
+            var isDelivered = _helper.ToyIsDelivered(childId);
 
             Assert.True(isDelivered);
         }

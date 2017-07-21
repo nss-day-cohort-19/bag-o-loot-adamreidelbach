@@ -7,7 +7,7 @@ namespace BagOLoot
 {
     public class ChildRegister
     {
-        private List<string> _children = new List<string>();
+        private List<Child> _children = new List<Child>();
         private string _connectionString = $"Data Source={Environment.GetEnvironmentVariable("BAGOLOOT_DB")}";
         private SqliteConnection _connection;
 
@@ -48,7 +48,7 @@ namespace BagOLoot
             return _lastId != 0;
         }
 
-        public List<string> GetChildren ()
+        public List<Child> GetChildren()
         {
             using (_connection)
             {
@@ -56,14 +56,14 @@ namespace BagOLoot
                 SqliteCommand dbcmd = _connection.CreateCommand();
 
                 // Select the id and name of every child
-                dbcmd.CommandText = $"select id, name from child";
+                dbcmd.CommandText = $"select id, name, delivered from child";
 
                 using (SqliteDataReader dr = dbcmd.ExecuteReader())
                 {
                     //Read each row in the resultset
                     while (dr.Read())
                     {
-                        _children.Add(dr[1].ToString()); //Add child name to list
+                        _children.Add( new Child(dr.GetInt32(0), dr[1].ToString(), dr.GetInt32(2)) );
                     }
                 }
 
@@ -75,13 +75,13 @@ namespace BagOLoot
             return _children;
         }
 
-        public string GetChild (string name)
-        {
-            var child = _children.SingleOrDefault(c => c == name);
+        // public Child GetChild (int childId, string childName, int delivered)
+        // {
+        //     var child = _children.SingleOrDefault(c => c == childName);
 
-            // Inevitably, two children will have the same name. Then what?
+        //     // Inevitably, two children will have the same name. Then what?
 
-            return child;
-        }
+        //     return child;
+        // }
     }
 }

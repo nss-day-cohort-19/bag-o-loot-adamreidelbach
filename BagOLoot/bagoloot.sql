@@ -1,2 +1,2 @@
-select name, id
-from child;
+insert into ToyBag
+values (1, "Baseball", 1);
