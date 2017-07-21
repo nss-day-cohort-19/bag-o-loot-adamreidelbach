@@ -82,5 +82,33 @@ namespace BagOLoot
                }
             }
         }
+
+        public void ViewChildsToys()
+        {
+            Console.Clear();
+            Console.WriteLine ("View Bag o' Loot for which child?");
+            List<Child> listOfChildren = registry.GetChildren();
+            List<Toys> childsToys = new List<Toys>();
+            List<Toys> listOfToys = new List<Toys>();
+            int counting = 1;
+            foreach (var child in listOfChildren)
+            {
+                Console.WriteLine(counting + ". " + child.ChildName);
+                counting++;
+            }
+            Console.Write ("> ");
+            var childChoice = Console.ReadLine();
+            Console.WriteLine();
+
+            foreach (var child in listOfChildren)
+            {
+                if (child.ChildName == childChoice) {
+                    listOfToys = _helper.GetChildsToys(child.ChildId);
+                    foreach (var toy in listOfToys) {
+                        Console.WriteLine(toy.Name);
+                    }
+                }
+            }       
+        }
     }
 }

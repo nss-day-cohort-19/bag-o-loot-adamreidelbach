@@ -37,13 +37,11 @@ namespace BagOLoot
                     actions.RemoveToy();
                     break;
                 }
-                // if (choice == 3)
-                // {
-                //     Console.WriteLine ("Remove toy from which child");
-                // }
-                // if (choice == 4)
-                // {
-                //     Console.WriteLine ("Choose toy to revoke from Kelly's Bag o' Loot");
+                case 4:
+                {
+                    actions.ViewChildsToys();
+                    break;
+                }
                 // }
                 // if (choice == 5)
                 // {
